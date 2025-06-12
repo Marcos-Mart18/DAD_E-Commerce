@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: msvc-inventory
+  config:
+    import: optional:configserver:http://localhost:8888
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3313/inventoryDb
+    username: root
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+server:
+  port: 8094

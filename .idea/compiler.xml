@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="microservice-gateway" />
+        <module name="microservice-inventory" />
+        <module name="microservice-config" />
+        <module name="microservice-shipping" />
+        <module name="microservice-user" />
+        <module name="microservice-eureka" />
+        <module name="microservice-order" />
+      </profile>
+      <profile name="Annotation profile for SpringMicroservices" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+        </processorPath>
+        <module name="microservice-catalog" />
+        <module name="cart" />
+        <module name="DAD_Project" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="microservice-auth" target="17" />
+      <module name="microservice-product" target="17" />
+      <module name="microservice-role" target="17" />
+      <module name="ms-category-service" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="DAD_Project" options="-parameters" />
+      <module name="cart" options="-parameters" />
+      <module name="microservice-auth" options="-parameters" />
+      <module name="microservice-catalog" options="-parameters" />
+      <module name="microservice-config" options="-parameters" />
+      <module name="microservice-eureka" options="-parameters" />
+      <module name="microservice-gateway" options="-parameters" />
+      <module name="microservice-inventory" options="-parameters" />
+      <module name="microservice-order" options="-parameters" />
+      <module name="microservice-product" options="-parameters" />
+      <module name="microservice-role" options="-parameters" />
+      <module name="microservice-shipping" options="-parameters" />
+      <module name="microservice-user" options="-parameters" />
+      <module name="ms-category-service" options="-parameters" />
+    </option>
+  </component>
+</project>

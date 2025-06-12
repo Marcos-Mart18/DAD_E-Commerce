@@ -1,0 +1,103 @@
+version: '3.8'
+
+services:
+  mysql-cartdb:
+    image: mysql:8.0
+    container_name: mysql-cartDb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: cartDb
+    ports:
+      - "3312:3306"
+    networks:
+      - ecommerce-network
+
+  mysql-inventoryDb:
+    image: mysql:8.0
+    container_name: mysql-inventoryDb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: inventoryDb
+    ports:
+      - "3313:3306"
+    networks:
+      - ecommerce-network
+
+  postgres-orderdb:
+    image: postgres:latest
+    container_name: postgres-orderdb
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: orderdb
+    ports:
+      - "5434:5432"
+    networks:
+      - ecommerce-network
+
+  mysql-paymentDb:
+    image: mysql:latest
+    container_name: mysql-paymentDb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: paymentDb
+    ports:
+      - "3315:3306"
+    networks:
+      - ecommerce-network
+
+  postgres-catalogdb:
+    image: postgres:latest
+    container_name: postgres-catalogdb
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: catalogdb
+    ports:
+      - "5435:5432"
+    networks:
+      - ecommerce-network
+
+  mysql-userdb:
+    image: mysql:8.0
+    container_name: mysql-userdb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: userDb
+    ports:
+      - "3308:3306"
+    networks:
+      - ecommerce-network
+
+  postgres-shippingdb:
+    image: postgres:latest
+    container_name: postgres-shippingdb
+    restart: always
+    environment:
+      POSTGRES_DB: shippingDb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - "5436:5432"
+    networks:
+      - ecommerce-network
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0
+    container_name: keycloak
+    command: start-dev
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080"
+
+
+networks:
+  ecommerce-network:

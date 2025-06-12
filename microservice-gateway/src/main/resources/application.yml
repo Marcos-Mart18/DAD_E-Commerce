@@ -1,0 +1,142 @@
+spring:
+  config:
+    import: optional:configserver:http://localhost:8888
+
+  application:
+    name: msvc-gateway
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: personas-route
+          uri: lb://msvc-user
+          predicates:
+              - Path=/api/personas/**
+          filters:
+              - StripPrefix=1
+        - id: direcciones-route
+          uri: lb://msvc-user
+          predicates:
+              - Path=/api/direcciones/**
+          filters:
+              - StripPrefix=1
+        - id: tarjetas-route
+          uri: lb://msvc-user
+          predicates:
+              - Path=/api/tarjetas/**
+          filters:
+              - StripPrefix=1
+        - id: usuarios-route
+          uri: lb://msvc-user
+          predicates:
+              - Path=/api/usuarios/**
+          filters:
+              - StripPrefix=1
+
+        - id: msvc-catalog-category
+          uri: lb://msvc-catalog
+          predicates:
+            - Path=/api/categorias/**
+          filters:
+            - StripPrefix=1
+        - id: msvc-catalog-product
+          uri: lb://msvc-catalog
+          predicates:
+            - Path=/api/productos/**
+          filters:
+            - StripPrefix=1
+
+        - id: invoice-route
+          uri: lb://msvc-payment
+          predicates:
+            - Path=/api/invoice/**
+          filters:
+            - StripPrefix=1
+        - id: method-route
+          uri: lb://msvc-payment
+          predicates:
+            - Path=/api/method/**
+          filters:
+            - StripPrefix=1
+        - id: payment-route
+          uri: lb://msvc-payment
+          predicates:
+            - Path=/api/payment/**
+          filters:
+            - StripPrefix=1
+        - id: transaction-route
+          uri: lb://msvc-payment
+          predicates:
+            - Path=/api/transaction/**
+          filters:
+            - StripPrefix=1
+
+        - id: msvc-order
+          uri: lb://msvc-order
+          predicates:
+            - Path=/api/orders/**
+          filters:
+            - StripPrefix=1
+
+        - id: inventarios-route
+          uri: lb://msvc-inventory
+          predicates:
+            - Path=/api/inventarios/**
+          filters:
+            - StripPrefix=1
+        - id: movimientos-route
+          uri: lb://msvc-inventory
+          predicates:
+            - Path=/api/movimientos/**
+          filters:
+            - StripPrefix=1
+
+        - id: cart-route
+          uri: lb://msvc-cart
+          predicates:
+            - Path=/api/cart/**
+          filters:
+            - StripPrefix=1
+        - id: discount-route
+          uri: lb://msvc-cart
+          predicates:
+            - Path=/api/discount/**
+          filters:
+            - StripPrefix=1
+        - id: item-route
+          uri: lb://msvc-cart
+          predicates:
+            - Path=/api/item/**
+          filters:
+            - StripPrefix=1
+        - id: reservations-route
+          uri: lb://msvc-cart
+          predicates:
+            - Path=/api/reservations/**
+          filters:
+            - StripPrefix=1
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/ecommerce
+          jwk-set-uri: http://localhost:8080/realms/ecommerce/protocol/openid-connect/certs
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.boot.autoconfigure.web: DEBUG
+
+server:
+  port: 8099
