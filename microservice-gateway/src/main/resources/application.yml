@@ -215,6 +215,13 @@ spring:
             - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
             - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
 
+        - id: msvc-shipping
+          uri: lb://msvc-shipping
+          predicates:
+            - Path=/api/shippings/**
+          filters:
+            - StripPrefix=1
+
   security:
     oauth2:
       resourceserver:
