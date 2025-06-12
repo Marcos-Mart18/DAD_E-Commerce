@@ -119,6 +119,13 @@ spring:
           filters:
             - StripPrefix=1
 
+        - id: msvc-shipping
+          uri: lb://msvc-shipping
+          predicates:
+            - Path=/api/shippings/**
+          filters:
+            - StripPrefix=1
+
   security:
     oauth2:
       resourceserver:

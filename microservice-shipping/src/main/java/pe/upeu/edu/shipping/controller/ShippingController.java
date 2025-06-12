@@ -11,7 +11,7 @@ import pe.upeu.edu.shipping.service.ShippingService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/shippings")
+@RequestMapping("/shippings")
 public class ShippingController {
     @Autowired
     private ShippingService shippingService;
