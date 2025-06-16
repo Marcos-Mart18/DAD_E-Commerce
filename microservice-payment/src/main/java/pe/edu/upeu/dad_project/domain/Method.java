@@ -1,5 +1,6 @@
 package pe.edu.upeu.dad_project.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,18 +16,15 @@ import java.util.List;
 @Setter
 @Table(name = "tbl_method")
 public class Method {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column (name = "id")
     private Long id;
-
-    @Column (name = "tipo")
     private String tipo;
+    private String datesMethod;
 
-    @Column(name= "dates_method")
-    private String dates_method;
-
-    @OneToMany(mappedBy = "method", cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<Payment> payment;
+    @OneToMany(mappedBy = "method", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Payment> payments;
 }

@@ -1,5 +1,6 @@
 package pe.edu.upeu.dad_project.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,15 +14,13 @@ import lombok.Setter;
 @Setter
 @Table(name="tbl_factura")
 public class Invoice {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
 
-    @Column(name = "doc")
+    private Long id;
     private String doc;
 
     @OneToOne(mappedBy = "invoice", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Payment payment;
 }

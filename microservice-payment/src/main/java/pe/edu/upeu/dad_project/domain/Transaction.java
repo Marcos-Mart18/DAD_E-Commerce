@@ -18,17 +18,12 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column (name="id")
     private Long id;
-
-    @Column (name = "Intento_pago")
-    private String intento_pago;
-
-    @Column (name = "Código")
+    private String intentoPago;
     private String codigo;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "payment_id", nullable = false)
     private Payment payment;
 }
+
