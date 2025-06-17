@@ -88,15 +88,32 @@ services:
     networks:
       - ecommerce-network
 
+  postgres-notificationdb:
+    image: postgres:latest
+    container_name: postgres-notificationdb
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: notificationdb
+    ports:
+      - "5437:5432"
+    networks:
+      - ecommerce-network
+
   keycloak:
     image: quay.io/keycloak/keycloak:24.0
     container_name: keycloak
-    command: start-dev
+    command: start-dev --import-realm
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
     ports:
       - "8080:8080"
+    volumes:
+      - ./keycloack-export:/opt/keycloak/data/import
+    networks:
+      - ecommerce-network
 
 
 networks:

@@ -2,10 +2,10 @@ server:
   port: 8761
 
 spring:
-  application:
-    name: msvc-eureka
   config:
     import: optional:configserver:http://localhost:8888
+  application:
+    name: msvc-eureka
 
 eureka:
   instance:
@@ -15,4 +15,3 @@ eureka:
     fetch-registry: false
     serverUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-

@@ -17,10 +17,10 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/ecommerce
+          issuer-uri: http://localhost:8282/realms/ecommerce
 
 keycloak:
-  auth-server-url: http://localhost:8080
+  auth-server-url: http://localhost:8282
   realm: ecommerce
   resource: backend-client
   credentials:
