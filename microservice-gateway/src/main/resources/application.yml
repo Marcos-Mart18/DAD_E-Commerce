@@ -118,6 +118,36 @@ spring:
             - Path=/api/reservations/**
           filters:
             - StripPrefix=1
+        - id: admin-panel-route-productos
+          uri: lb://msvc-admin-panel
+          predicates:
+            - Path=/api/admin/productos/**
+          filters:
+            - StripPrefix=1
+        - id: admin-panel-route-categorias
+          uri: lb://msvc-admin-panel
+          predicates:
+            - Path=/api/admin/categorias/**
+          filters:
+            - StripPrefix=1
+        - id: admin-panel-route-movimientos
+          uri: lb://msvc-admin-panel
+          predicates:
+            - Path=/api/admin/movimientos/**
+          filters:
+            - StripPrefix=1
+        - id: admin-panel-route-inventarios
+          uri: lb://msvc-admin-panel
+          predicates:
+            - Path=/api/admin/inventarios/**
+          filters:
+            - StripPrefix=1
+        - id: admin-panel-route-pagos
+          uri: lb://msvc-admin-panel
+          predicates:
+            - Path=/api/admin/pagos/**
+          filters:
+            - StripPrefix=1
 
   security:
     oauth2:

@@ -64,4 +64,18 @@ public class MovimientoController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
+        try {
+            Optional<Movimiento> movimiento = movimientoService.read(id);
+            if (movimiento.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Movimiento no encontrado con id: " + id);
+            }
+            movimientoService.delete(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

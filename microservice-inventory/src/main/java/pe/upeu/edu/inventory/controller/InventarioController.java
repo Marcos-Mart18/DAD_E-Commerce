@@ -52,7 +52,7 @@ public class InventarioController {
             Inventario creado = inventarioService.create(inventario);
             return new ResponseEntity<>(creado, HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -71,5 +71,18 @@ public class InventarioController {
         inventario.setId(id);
         Inventario actualizado = inventarioService.update(inventario);
         return ResponseEntity.ok(actualizado);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
+        try {
+            if (inventarioService.read(id).isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Inventario no encontrado con id: " + id);
+            }
+            inventarioService.delete(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

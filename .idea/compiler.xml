@@ -20,12 +20,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
         <module name="microservice-catalog" />
-        <module name="cart" />
+        <module name="microservice-admin-panel" />
         <module name="DAD_Project" />
+        <module name="cart" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -39,6 +39,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="DAD_Project" options="-parameters" />
       <module name="cart" options="-parameters" />
+      <module name="microservice-admin-panel" options="-parameters" />
       <module name="microservice-auth" options="-parameters" />
       <module name="microservice-catalog" options="-parameters" />
       <module name="microservice-config" options="-parameters" />

@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upeu.dad_project.domain.Payment;
+import pe.edu.upeu.dad_project.dto.PaymentDTO;
+import pe.edu.upeu.dad_project.dto.PaymentMapper;
 import pe.edu.upeu.dad_project.services.Impl.PaymentServiceImpl;
 import pe.edu.upeu.dad_project.services.PaymentService;
 
@@ -66,6 +68,39 @@ public class PaymentController {
         try {
             paymentService.delete(id);
             return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/admin")
+    public ResponseEntity<List<PaymentDTO>> getAllForAdmin() {
+        try {
+            List<Payment> payments = paymentService.getAll();
+            if (payments.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+            List<PaymentDTO> dtoList = payments.stream()
+                    .map(PaymentMapper::toDto)
+                    .toList();
+
+            return new ResponseEntity<>(dtoList, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/admin/{id}")
+    public ResponseEntity<PaymentDTO> getByIdForAdmin(@PathVariable("id") Long id) {
+        try {
+            Payment payment = paymentService.getById(id).orElse(null);
+            if (payment == null) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+
+            PaymentDTO dto = PaymentMapper.toDto(payment);
+            return new ResponseEntity<>(dto, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
