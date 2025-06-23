@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/productos")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
 
     @Autowired
@@ -36,7 +37,7 @@ public class ProductController {
         try {
             Product product = productService.read(id).orElse(null);
             if (product == null) {
-                return ResponseEntity.notFound().build();
+                return new ResponseEntity<>(null,HttpStatus.NO_CONTENT);
             }
             return new ResponseEntity<>(product, HttpStatus.OK);
         } catch (Exception e) {

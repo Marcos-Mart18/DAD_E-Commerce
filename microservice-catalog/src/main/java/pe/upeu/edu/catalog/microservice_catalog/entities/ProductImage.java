@@ -7,22 +7,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity
-@Table(name = "tbl_category")
-public class Category {
+@Table(name = "tbl_product_image")
+public class ProductImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String description;
-    private String image;
+    private String imageUrl;
+    private boolean isMain;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.REMOVE)
-    private List<Product> products;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    @JsonIgnore
+    private Product product;
 }
