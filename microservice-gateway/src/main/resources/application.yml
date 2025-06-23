@@ -147,7 +147,7 @@ spring:
           predicates:
             - Path=/api/admin/pagos/**
           filters:
-            - StripPrefix=1
+            - StripPrefix=
 
   security:
     oauth2:

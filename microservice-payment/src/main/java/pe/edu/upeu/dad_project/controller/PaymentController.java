@@ -37,6 +37,9 @@ public class PaymentController {
     public ResponseEntity<Payment> getById(@PathVariable("id") Long id) {
         try {
             Payment p = paymentService.getById(id).get();
+            if (p == null) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
             return new ResponseEntity<>(p, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -98,7 +101,6 @@ public class PaymentController {
             if (payment == null) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
-
             PaymentDTO dto = PaymentMapper.toDto(payment);
             return new ResponseEntity<>(dto, HttpStatus.OK);
         } catch (Exception e) {

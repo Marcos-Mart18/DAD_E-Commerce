@@ -1,6 +1,7 @@
 package pe.upeu.edu.admin_panel.microservice_admin_panel.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +12,7 @@ import pe.upeu.edu.admin_panel.microservice_admin_panel.dto.PaymentDTO;
 import pe.upeu.edu.admin_panel.microservice_admin_panel.service.PaymentService;
 
 import java.util.List;
-
+@Slf4j
 @RestController
 @RequestMapping("/admin/pagos")
 @RequiredArgsConstructor
@@ -21,7 +22,7 @@ public class PaymentController {
     @GetMapping
     public ResponseEntity<List<PaymentDTO>> findAll() {
         List<PaymentDTO> pagos = paymentService.getAll();
-        if (pagos.isEmpty()) {
+        if (pagos == null || pagos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(pagos, HttpStatus.OK);

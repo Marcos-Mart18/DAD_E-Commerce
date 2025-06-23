@@ -21,6 +21,7 @@ public class Category {
     private Long id;
     private String name;
     private String description;
+    private String image;
     @JsonIgnore
     @OneToMany(mappedBy = "category", cascade = CascadeType.REMOVE)
     private List<Product> products;
