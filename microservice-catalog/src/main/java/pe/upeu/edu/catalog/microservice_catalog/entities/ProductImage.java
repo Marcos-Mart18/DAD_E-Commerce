@@ -22,6 +22,5 @@ public class ProductImage {
 
     @ManyToOne
     @JoinColumn(name = "product_id")
-    @JsonIgnore
     private Product product;
 }

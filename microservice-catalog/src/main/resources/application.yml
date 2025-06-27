@@ -17,6 +17,10 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
 
 eureka:
   client:
@@ -25,3 +29,13 @@ eureka:
 
 server:
   port: 8095
+
+file:
+  upload:
+    category-images: uploaded_images/category
+    product-images: uploaded_images/productimage
+
+firebase:
+  credentials: firebase-credentials.json
+  storage:
+    bucket: ecommerce-dad-upeu.firebasestorage.app

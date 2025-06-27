@@ -22,15 +22,16 @@ public class Product {
     private String name;
     private double price;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
     private List<ProductDescription> descriptions;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
     private List<ProductImage> images;
 
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    @JsonIgnore
     private Category category;
 }

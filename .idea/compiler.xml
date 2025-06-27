@@ -23,8 +23,8 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
         <module name="microservice-catalog" />
-        <module name="DAD_Project" />
         <module name="microservice-admin-panel" />
+        <module name="DAD_Project" />
         <module name="cart" />
       </profile>
     </annotationProcessing>
