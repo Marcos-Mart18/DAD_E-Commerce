@@ -16,15 +16,15 @@ public class SecurityConfig implements WebFluxConfigurer {
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         return http
-                .csrf(ServerHttpSecurity.CsrfSpec::disable)    // Desactiva CSRF
-                .cors().and()                                  // Habilita CORS
+                .csrf(ServerHttpSecurity.CsrfSpec::disable)
+                .cors().and()
                 .authorizeExchange(exchanges -> exchanges
-                        .pathMatchers(HttpMethod.OPTIONS).permitAll()      // ← Permite todos los preflight
+                        .pathMatchers(HttpMethod.OPTIONS).permitAll()
                         .pathMatchers("/actuator/**", "/api/productos", "/api/categorias")
-                        .permitAll()                                  // Rutas públicas
-                        .anyExchange().authenticated()                    // Lo demás requiere auth
+                        .permitAll()
+                        .anyExchange().authenticated()
                 )
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt())  // Configura JWT como servidor de recursos
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt())
                 .build();
     }
 
