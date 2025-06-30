@@ -14,27 +14,39 @@ spring:
         - id: personas-route
           uri: lb://msvc-user
           predicates:
-              - Path=/api/personas/**
+            - Path=/api/personas/**
           filters:
-              - StripPrefix=1
+            - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
         - id: direcciones-route
           uri: lb://msvc-user
           predicates:
-              - Path=/api/direcciones/**
+            - Path=/api/direcciones/**
           filters:
-              - StripPrefix=1
+            - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
         - id: tarjetas-route
           uri: lb://msvc-user
           predicates:
-              - Path=/api/tarjetas/**
+            - Path=/api/tarjetas/**
           filters:
-              - StripPrefix=1
+            - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
         - id: usuarios-route
           uri: lb://msvc-user
           predicates:
-              - Path=/api/usuarios/**
+            - Path=/api/usuarios/**
           filters:
-              - StripPrefix=1
+            - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
 
         - id: msvc-catalog-category
           uri: lb://msvc-catalog
@@ -42,12 +54,18 @@ spring:
             - Path=/api/categorias/**
           filters:
             - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
         - id: msvc-catalog-product
           uri: lb://msvc-catalog
           predicates:
             - Path=/api/productos/**
           filters:
             - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
 
         - id: invoice-route
           uri: lb://msvc-payment
@@ -55,24 +73,36 @@ spring:
             - Path=/api/invoice/**
           filters:
             - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
         - id: method-route
           uri: lb://msvc-payment
           predicates:
             - Path=/api/method/**
           filters:
             - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
         - id: payment-route
           uri: lb://msvc-payment
           predicates:
             - Path=/api/payment/**
           filters:
             - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
         - id: transaction-route
           uri: lb://msvc-payment
           predicates:
             - Path=/api/transaction/**
           filters:
             - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
 
         - id: msvc-order
           uri: lb://msvc-order
@@ -80,6 +110,9 @@ spring:
             - Path=/api/orders/**
           filters:
             - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
 
         - id: inventarios-route
           uri: lb://msvc-inventory
@@ -87,12 +120,18 @@ spring:
             - Path=/api/inventarios/**
           filters:
             - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
         - id: movimientos-route
           uri: lb://msvc-inventory
           predicates:
             - Path=/api/movimientos/**
           filters:
             - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
 
         - id: cart-route
           uri: lb://msvc-cart
@@ -100,54 +139,81 @@ spring:
             - Path=/api/cart/**
           filters:
             - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
         - id: discount-route
           uri: lb://msvc-cart
           predicates:
             - Path=/api/discount/**
           filters:
             - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
         - id: item-route
           uri: lb://msvc-cart
           predicates:
             - Path=/api/item/**
           filters:
             - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
         - id: reservations-route
           uri: lb://msvc-cart
           predicates:
             - Path=/api/reservations/**
           filters:
             - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
         - id: admin-panel-route-productos
           uri: lb://msvc-admin-panel
           predicates:
             - Path=/api/admin/productos/**
           filters:
             - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
         - id: admin-panel-route-categorias
           uri: lb://msvc-admin-panel
           predicates:
             - Path=/api/admin/categorias/**
           filters:
             - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
         - id: admin-panel-route-movimientos
           uri: lb://msvc-admin-panel
           predicates:
             - Path=/api/admin/movimientos/**
           filters:
             - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
         - id: admin-panel-route-inventarios
           uri: lb://msvc-admin-panel
           predicates:
             - Path=/api/admin/inventarios/**
           filters:
             - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
         - id: admin-panel-route-pagos
           uri: lb://msvc-admin-panel
           predicates:
             - Path=/api/admin/pagos/**
           filters:
-            - StripPrefix=
+            - StripPrefix=1
+            - AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+            - AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+            - AddRequestHeader=Access-Control-Allow-Headers, Origin, Content-Type, Accept, Authorization
 
   security:
     oauth2:
