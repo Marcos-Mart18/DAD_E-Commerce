@@ -1,6 +1,7 @@
 package pe.upeu.edu.catalog.microservice_catalog.service.impl;
 
 import com.netflix.discovery.converters.Auto;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.upeu.edu.catalog.microservice_catalog.Repository.ProductRepository;

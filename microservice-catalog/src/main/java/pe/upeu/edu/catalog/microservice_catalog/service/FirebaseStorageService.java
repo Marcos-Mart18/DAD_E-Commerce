@@ -45,7 +45,7 @@ public class FirebaseStorageService {
                 file.getBytes(),
                 file.getContentType()
         );
-        return "https://firebasestorage.googleapis.com/v0/b/" + bucketName + "/o/images%2F" + fileName + "?alt=media";
+        return "https://firebasestorage.googleapis.com/v0/b/" + bucketName + "/o/images/" + fileName + "?alt=media";
     }
 
     // Obtener extensión
